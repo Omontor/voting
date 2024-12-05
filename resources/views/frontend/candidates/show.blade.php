@@ -10,6 +10,18 @@
                 </div>
 
                 <div class="card-body">
+
+
+                    <div>
+                        <td>
+                            @if($candidate->image)
+                                <a href="{{ $candidate->image->getUrl() }}" target="_blank" style="display: inline-block">
+                                    <img src="{{ $candidate->image->getUrl()}}" style="width:80%">
+                                </a>
+                            @endif
+                        </td>
+                    </div>
+                    <br>
                     <div class="form-group">
 
                         <table class="table table-bordered table-striped">
@@ -42,13 +54,7 @@
                                     <th>
                                         {{ trans('cruds.candidate.fields.image') }}
                                     </th>
-                                    <td>
-                                        @if($candidate->image)
-                                            <a href="{{ $candidate->image->getUrl() }}" target="_blank" style="display: inline-block">
-                                                <img src="{{ $candidate->image->getUrl('thumb') }}">
-                                            </a>
-                                        @endif
-                                    </td>
+                                  
                                 </tr>
                                 <tr>
                                     <th>
