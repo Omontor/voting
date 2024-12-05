@@ -174,7 +174,7 @@ class HomeController
             'fields'                => [
                 'value'     => '',
                 'candidate' => 'name',
-                'user'      => '',
+                'user'      => 'name',
             ],
             'translation_key' => 'vote',
         ];

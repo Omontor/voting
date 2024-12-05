@@ -11,6 +11,8 @@ use App\Models\Vote;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Auth;
+
 
 class VoteController extends Controller
 {
@@ -27,16 +29,25 @@ class VoteController extends Controller
     {
         abort_if(Gate::denies('vote_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $candidates = Candidate::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $userId = Auth::id();
 
-        return view('frontend.votes.create', compact('candidates'));
+        // Find a candidate the user hasn't voted for
+        $candidate = Candidate::whereDoesntHave('votes', function ($query) use ($userId) {
+            $query->where('user_id', $userId);
+        })->first();
+
+        if (!$candidate) {
+            return redirect(url('/home'))->with('message', 'Ya votaste por todos, vete a la verga. 😊');
+        }
+
+        return view('frontend.votes.create', compact('candidate'));
     }
 
     public function store(StoreVoteRequest $request)
     {
         $vote = Vote::create($request->all());
 
-        return redirect()->route('frontend.votes.index');
+        return redirect()->back();
     }
 
     public function edit(Vote $vote)

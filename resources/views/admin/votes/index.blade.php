@@ -55,7 +55,7 @@
                                 {{ $vote->candidate->name ?? '' }}
                             </td>
                             <td>
-                                {{ $vote->user ?? '' }}
+                                {{ $vote->user->name ?? '' }}
                             </td>
                             <td>
                                 @can('vote_show')

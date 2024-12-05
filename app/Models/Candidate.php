@@ -55,6 +55,16 @@ class Candidate extends Model implements HasMedia
         return $this->hasMany(Vote::class, 'candidate_id', 'id');
     }
 
+    public function votes()
+    {
+        return $this->hasMany(Vote::class, 'candidate_id', 'id');
+    }
+
+    public function getVotesSum()
+    {
+        return $this->votes()->sum('value');
+    }
+
     public function creator()
     {
         return $this->belongsTo(User::class, 'creator_id');

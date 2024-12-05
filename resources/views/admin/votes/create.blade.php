@@ -31,7 +31,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="user">{{ trans('cruds.vote.fields.user') }}</label>
-                <input class="form-control {{ $errors->has('user') ? 'is-invalid' : '' }}" type="number" name="user" id="user" value="{{ old('user', '') }}" step="1" required>
+                <input class="form-control {{ $errors->has('user') ? 'is-invalid' : '' }}" type="number" name="user_id" id="user" value="{{ old('user', '') }}" step="1" required>
                 @if($errors->has('user'))
                     <span class="text-danger">{{ $errors->first('user') }}</span>
                 @endif

@@ -22,7 +22,7 @@ class Vote extends Model
     protected $fillable = [
         'value',
         'candidate_id',
-        'user',
+        'user_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -36,5 +36,10 @@ class Vote extends Model
     public function candidate()
     {
         return $this->belongsTo(Candidate::class, 'candidate_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

@@ -27,10 +27,10 @@ class StoreVoteRequest extends FormRequest
                 'required',
                 'integer',
             ],
-            'user' => [
+            'user_id' => [
                 'required',
                 'integer',
-                'min:-2147483648',
+                'min:1',
                 'max:2147483647',
             ],
         ];

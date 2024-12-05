@@ -5,11 +5,7 @@
         <div class="col-md-12">
             @can('vote_create')
                 <div style="margin-bottom: 10px;" class="row">
-                    <div class="col-lg-12">
-                        <a class="btn btn-success" href="{{ route('frontend.votes.create') }}">
-                            {{ trans('global.add') }} {{ trans('cruds.vote.title_singular') }}
-                        </a>
-                    </div>
+
                 </div>
             @endcan
             <div class="card">
